@@ -15,7 +15,6 @@ export class Homepage extends View {
     }
 
     render() {
-        const view = super.render({title: 'Welcome to xSPIRE!'})
-        return view
+        return super.render({title: 'Welcome to xSPIRE!'})
     }
 }

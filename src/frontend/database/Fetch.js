@@ -71,7 +71,7 @@ export function fetch(
 ) {
     console.log(path);
     console.log(options);
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, _) => {
         switch (path) {
             case '/schedules':
                 resolve(schedules(options))

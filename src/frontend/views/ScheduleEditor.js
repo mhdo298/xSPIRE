@@ -1,6 +1,5 @@
 import {View} from "../state-management/Views.js";
 import {fetch} from "../database/Fetch.js";
-import {Events} from "../state-management/Events.js";
 
 
 export class ScheduleEditor extends View {
@@ -19,8 +18,7 @@ export class ScheduleEditor extends View {
     async render() {
         const id = new URLSearchParams(window.location.search).get('id')
         const scheduleInfo = await this.#getSchedule(id);
-        const view = super.render({title: scheduleInfo['name']})
-        return view
+        return super.render({title: scheduleInfo['name']})
     }
 
     async #getSchedule(id) {
