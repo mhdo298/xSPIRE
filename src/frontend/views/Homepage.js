@@ -8,15 +8,14 @@ export class Homepage extends View {
     }
 
     constructor() {
-        super('homepage');
+        super({
+            name: 'homepage',
+            navbar: 'Home'
+        });
     }
 
     render() {
-        const homepage = document.createElement("div");
-        homepage.id = this.name
-        const title = document.createElement("h1");
-        title.innerText = 'Welcome to xSPIRE!';
-        homepage.appendChild(title)
-        return homepage
+        const view = super.render({title: 'Welcome to xSPIRE!'})
+        return view
     }
 }

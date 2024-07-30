@@ -16,22 +16,23 @@ export class NavBar {
     }
 
     async render() {
-        const bar = document.createElement('div');
+        const bar = document.createElement('nav');
         bar.id = 'navbar'
 
         const list = document.createElement('ul');
         Views.singleton().allViews().forEach(view => {
             const line = document.createElement('li');
+            list.appendChild(line);
+
             const url = document.createElement('a');
-            url.href = '#' + view.url;
+            url.href = view.uri;
             url.innerText = view.navbar;
             url.addEventListener('click', async (event) => {
                     event.preventDefault()
-                    await this.#events.call('changeView', view)
+                    await this.#events.call('changeView', view.uri)
                 }
             )
             line.appendChild(url);
-            list.appendChild(line);
         })
 
         bar.appendChild(list);

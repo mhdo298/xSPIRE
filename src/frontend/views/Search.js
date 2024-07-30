@@ -8,15 +8,24 @@ export class Search extends View {
     }
 
     constructor() {
-        super('search-home');
+        super({
+            name: 'search-home',
+            navbar: 'Search courses'
+        });
     }
 
     render() {
-        const searchView = document.createElement("div");
-        searchView.id = this.name
-        const title = document.createElement("h1");
-        title.innerText = 'Find a course!';
-        searchView.appendChild(title)
-        return searchView
+        const view = super.render({title: 'Find a course!'});
+        const searchDiv = document.createElement("div");
+        searchDiv.classList.add("container");
+        view.appendChild(searchDiv);
+
+        const mainInput = document.createElement("input");
+        mainInput.type = "text";
+        mainInput.id = "main-keywords";
+        mainInput.placeholder = 'Search keywords in course name, description, etc.';
+        searchDiv.appendChild(mainInput);
+
+        return view
     }
 }
