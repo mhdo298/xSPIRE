@@ -46,9 +46,13 @@ export class App {
     async #navigateTo(uri, back) {
         const url = new URL(uri, window.location)
         console.log(url)
-        const view = this.#views.getView(url.pathname) || Homepage.getView();
-        this.#mainDiv.innerHTML = '';
+        let view = this.#views.getView(url.pathname);
+        if (!view) {
+            view = Homepage.getView()
+            uri = view.uri
+        }
         if (!back) window.history.pushState(view.name, view.title, uri)
+        this.#mainDiv.innerHTML = '';
         this.#mainDiv.appendChild(await view.render());
     }
 

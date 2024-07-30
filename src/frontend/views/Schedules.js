@@ -37,11 +37,12 @@ class ScheduleList {
     async render() {
         const schedules = await this.#getSchedules()
         const listDiv = document.createElement('div')
-
+        listDiv.id = 'schedule-div'
         const addSchedule = this.#newSchedule()
         listDiv.appendChild(addSchedule)
 
         this.#list = document.createElement("ul");
+        this.#list.id = 'schedule-list'
         schedules.forEach(schedule => {
             this.#list.appendChild(this.#scheduleItem(schedule.name, schedule.id))
         })
@@ -53,6 +54,7 @@ class ScheduleList {
 
     #newSchedule() {
         const newScheduleDiv = document.createElement("div");
+        newScheduleDiv.classList.add('container-new-schedule')
 
         const scheduleName = document.createElement("input");
         scheduleName.type = "text";
@@ -68,6 +70,7 @@ class ScheduleList {
 
         const scheduleButton = document.createElement("button");
         scheduleButton.innerText = 'Make new schedule!'
+        scheduleButton.id = "new-schedule-button";
         scheduleButton.addEventListener("click", async () => {
             await this.#addSchedule(scheduleName)
         })
@@ -85,7 +88,7 @@ class ScheduleList {
 
     #scheduleItem(name, id) {
         const scheduleLI = document.createElement("li");
-        scheduleLI.classList.add("course");
+        scheduleLI.classList.add("schedule-item");
 
         const scheduleLink = document.createElement("a");
         scheduleLink.innerText = name;

@@ -18,7 +18,11 @@ export class ScheduleEditor extends View {
     async render() {
         const id = new URLSearchParams(window.location.search).get('id')
         const scheduleInfo = await this.#getSchedule(id);
-        return super.render({title: scheduleInfo['name']})
+        const view = super.render({title: scheduleInfo['name']})
+        const dynamicContent = document.createElement("h2");
+        dynamicContent.innerText = id
+        view.appendChild(dynamicContent);
+        return view
     }
 
     async #getSchedule(id) {
