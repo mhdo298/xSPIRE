@@ -6,7 +6,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": {
+    "name": "Minh Do",
+    "email": "mhdo@umass.edu"
+  },
   "license": "ISC",
   "description": "",
   "devDependencies": {
