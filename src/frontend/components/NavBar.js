@@ -20,7 +20,7 @@ export class NavBar {
         bar.id = 'navbar'
 
         const list = document.createElement('ul');
-        Views.singleton().allViews().forEach(view => {
+        Views.singleton().navbarViews().forEach(view => {
             const line = document.createElement('li');
             list.appendChild(line);
 

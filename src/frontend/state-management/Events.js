@@ -9,15 +9,15 @@ export class Events {
         this.subscribers = {};
     }
 
-    _getEventOrDefault(event) {
+    #getEventOrDefault(event) {
         return this.subscribers[event] || (this.subscribers[event] = [])
     }
 
     subscribe(event, callback) {
-        this._getEventOrDefault(event).push(callback);
+        this.#getEventOrDefault(event).push(callback);
     }
 
     async call(event, message) {
-        await Promise.all(this._getEventOrDefault(event).map(async (callback) => await callback(message)))
+        await Promise.all(this.#getEventOrDefault(event).map(async (callback) => await callback(message)))
     }
 }

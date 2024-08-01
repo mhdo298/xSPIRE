@@ -10,7 +10,7 @@ export class Search extends View {
     constructor() {
         super({
             name: 'search-home',
-            navbar: 'Search courses'
+            navbar: 'Courses'
         });
     }
 

@@ -1,112 +1,131 @@
 :root {
     --spire-red: #881c1c;
+    --off-white: #e1e1e1;
 }
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     padding: 0;
     margin: 0;
-}
-
-.container {
-    width: 95%;
-    margin: 0 auto;
-}
-
-
-header {
-    background-color: var(--spire-red);
-}
-
-header::after {
-    content: '';
-    display: table;
-    clear: both;
 }
 
 #navbar {
-    float: right;
-}
-
-#navbar ul {
+    background-color: var(--spire-red);
     margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-#navbar li {
-    display: inline-block;
-    margin-left: 60px;
-    padding: 1em;
-}
-
-#navbar li:hover {
-    opacity: 50%;
+    padding: 0 2.5rem;
 }
 
 #navbar a {
+    font-size: 1.5rem;
     color: white;
     text-decoration: none;
-    font-size: 20px;
+    /*font-weight: bold;*/
 }
 
-h1 {
-    text-align: center;
-}
-
-
-
-.container-new-schedule {
-    text-align: center;
-    margin-left: 25%;
-    margin-right: 25%;
-}
-
-#new-schedule-name {
-    width: 60%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-#new-schedule-button {
-    padding: 10px;
-    background-color: var(--spire-red);
-    font-size: 16px;
-    color: white;
-    border: none;
+#navbar li {
 }
 
 
-#schedule-list ul {
+/*.container {*/
+/*    width: 95%;*/
+/*    margin: 0 auto;*/
+/*}*/
+
+
+/*header {*/
+/*    background-color: var(--spire-red);*/
+/*}*/
+
+/*header::after {*/
+/*    content: '';*/
+/*    display: table;*/
+/*    clear: both;*/
+/*}*/
+
+/*#navbar {*/
+/*    float: right;*/
+/*}*/
+
+#navbar ul {
     list-style: none;
-    padding: 0;
+    display: inline-flex;
+    gap: 1rem;
+    padding: 1rem 0;
+    margin: 0;
 }
 
-#schedule-list li {
-    margin-bottom: .5em;
-    padding: 1em;
-    background-color: white;
-    border-radius: 4px;
+/*#navbar li {*/
+/*    display: inline-block;*/
+/*    margin-left: 60px;*/
+/*    padding: 1em;*/
+/*}*/
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+/*#navbar li:hover {*/
+/*    opacity: 50%;*/
+/*}*/
+
+/*#navbar a {*/
+/*    color: white;*/
+/*    text-decoration: none;*/
+/*    font-size: 20px;*/
+/*}*/
+
+/*h1 {*/
+/*    text-align: center;*/
+/*}*/
 
 
-#schedule-list a {
-    color: var(--spire-red);
-    text-decoration: none;
-    font-size: 20px;
-}
+/*.container-new-schedule {*/
+/*    text-align: center;*/
+/*    margin-left: 25%;*/
+/*    margin-right: 25%;*/
+/*}*/
 
-#schedule-list button {
-    background-color: var(--spire-red);
-    color: white;
-    border: none;
-    font-size: 15px;
-    padding: .5em;
-}
+/*#new-schedule-name {*/
+/*    width: 60%;*/
+/*    padding: 10px;*/
+/*    border: 1px solid #ccc;*/
+/*    border-radius: 4px;*/
+/*    font-size: 16px;*/
+/*}*/
+
+/*#new-schedule-button {*/
+/*    padding: 10px;*/
+/*    background-color: var(--spire-red);*/
+/*    font-size: 16px;*/
+/*    color: white;*/
+/*    border: none;*/
+/*}*/
+
+
+/*#schedule-list ul {*/
+/*    list-style: none;*/
+/*    padding: 0;*/
+/*}*/
+
+/*#schedule-list li {*/
+/*    margin-bottom: .5em;*/
+/*    padding: 1em;*/
+/*    background-color: white;*/
+/*    border-radius: 4px;*/
+
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    align-items: center;*/
+/*}*/
+
+
+/*#schedule-list a {*/
+/*    color: var(--spire-red);*/
+/*    text-decoration: none;*/
+/*    font-size: 20px;*/
+/*}*/
+
+/*#schedule-list button {*/
+/*    background-color: var(--spire-red);*/
+/*    color: white;*/
+/*    border: none;*/
+/*    font-size: 15px;*/
+/*    padding: .5em;*/
+/*}*/

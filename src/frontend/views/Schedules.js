@@ -14,7 +14,7 @@ export class Schedules extends View {
     constructor() {
         super({
             name: 'schedule-home',
-            navbar: 'Course schedules'
+            navbar: 'Schedules'
         });
     }
 
