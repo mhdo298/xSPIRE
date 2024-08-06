@@ -23,9 +23,11 @@
   "contributors": [],
   "scripts": {
     "dev": "node src/backend/server.js",
-    "test": ""
+    "test": "",
+    "start": "npm install && node src/backend/server.js"
   },
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "pouchdb": "^9.0.0"
   }
 }

@@ -1,5 +1,5 @@
 import {View} from "../state-management/Views.js";
-import {fetch} from "../database/Fetch.js";
+// import {fetch} from "../database/Fetch.js";
 import {Events} from "../state-management/Events.js";
 import {ScheduleEditor} from "./ScheduleEditor.js";
 
@@ -112,24 +112,27 @@ class ScheduleList {
 
 
     async #getSchedules() {
-        return JSON.parse((await fetch('/schedules')).body)['list']
+        let response = await fetch('/schedules')
+        return await response.json()
     }
 
     async #makeSchedule(name) {
-        return JSON.parse((await fetch(`/schedules`, {
+        let response = await fetch(`/schedules`, {
+            headers: {
+                "Content-Type": "application/json",
+            },
             method: 'POST',
             body: JSON.stringify({
                 name: name
-            })
-        })).body)['id']
+            }),
+
+        })
+        return (await response.json())['id']
     }
 
     async #deleteSchedule(id) {
-        await fetch(`/schedules`, {
+        await fetch(`/schedules/${id}`, {
             method: 'DELETE',
-            body: JSON.stringify({
-                id: id
-            })
         })
     }
 }
