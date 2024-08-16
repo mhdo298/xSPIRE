@@ -41,7 +41,7 @@ export class ElementClass implements ElementNode {
 export const refresh: (_: ElementNode) => Promise<Node> = async (node) => {
 
     const element = node.element || document.createElement(node.tag)
-
+    if (node.update) await node.update(node)
     if (node.events) {
         const events = node.events
         Object.keys(events).forEach(key => element.addEventListener(key, (event: Event) =>
@@ -49,7 +49,7 @@ export const refresh: (_: ElementNode) => Promise<Node> = async (node) => {
         ))
     }
 
-    if (node.update) await node.update(node)
+
     // add all classes
     if (node.classes) {
         element.className = '';

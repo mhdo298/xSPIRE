@@ -1,4 +1,4 @@
-import {ElementClass, ElementInfo, ElementNode, hook} from "../../../base";
+import {ElementClass, ElementInfo, ElementNode, hook, refresh} from "../../../base";
 
 export class ListItem extends ElementClass {
     constructor(node: Partial<ElementNode>) {
@@ -9,19 +9,26 @@ export class ListItem extends ElementClass {
 
 export class List<T> extends ElementClass {
 
-    list: () => T[];
-    toComponent: (_: T, index: number) => ListItem
+    list: () => T[] | Promise<T[]>;
+    toComponent: (_: T, index: number) => ListItem | Promise<ListItem>
+    refresh = true
 
-    constructor(node: ElementInfo, list: () => T[] = () => [], toComponent: (_: T, index: number) => ListItem = () => new ListItem({})) {
+    constructor(node: ElementInfo, list: () => T[] | Promise<T[]> = () => [], toComponent: (_: T, index: number) => ListItem | Promise<ListItem> = () => new ListItem({})) {
         super('ul');
         this.extend(node).extend({
-            update: () => {
-                this.children = this.list().map(this.toComponent)
+            update: async () => {
+                if (this.refresh) {
+                    this.children = await Promise.all((await this.list()).map(this.toComponent))
+                    this.refresh = false
+                }
             },
         })
         this.list = list
         this.toComponent = toComponent
     }
 
-
+    async add(...items: T[]) {
+        this.children.push(...await Promise.all(items.map(this.toComponent)))
+        await refresh(this)
+    }
 }
