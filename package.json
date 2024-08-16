@@ -1,23 +1,27 @@
 {
   "name": "xspire",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "front:build": "npm run build --prefix ./frontend",
+    "back:build": "npm run build --prefix ./backend",
+    "build": "npm-run-all front:build back:build",
+    "start": "npm run start --prefix ./backend",
+    "front:dev": "npm run dev --prefix ./frontend",
+    "back:dev": "npm run dev --prefix ./backend",
+    "preview": "start chrome http://localhost:3000",
+    "dev": "npm-run-all --parallel front:dev back:dev preview"
   },
-  "keywords": [],
   "author": {
     "name": "Minh Do",
     "email": "mhdo@umass.edu"
   },
-  "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "parcel": "^2.12.0",
-    "sass": "^1.77.8",
-    "typescript": "^5.5.4"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mhdo298/xSPIRE.git"
   },
-  "dependencies": {
-    "express": "^4.19.2"
+  "private": true,
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
   }
 }

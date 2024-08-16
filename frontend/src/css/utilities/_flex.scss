@@ -1,0 +1,13 @@
+.flex {
+  display: flex;
+  gap: 1em;
+  justify-content: space-between;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}
