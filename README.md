@@ -4,6 +4,8 @@
 Use 'npm start'
 
 ## API endpoints:
+### /course?search=:term
+searches for a course containing the term.
 ### /schedules
 #### GET
 Get all schedules
@@ -15,4 +17,4 @@ Get schedule with specified id
 #### POST
 Update schedule with specified id by adding a course, specified by body
 #### DELETE
-Delete schedule with specified id
+Delete schedule with specified id, or a course within that schedule
