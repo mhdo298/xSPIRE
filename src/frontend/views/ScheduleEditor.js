@@ -33,28 +33,49 @@ export class ScheduleEditor extends View {
         view.appendChild(input)
         const button = document.createElement("button");
         const list = document.createElement("ul");
+        input.addEventListener("keyup", async event => {
+            event.preventDefault();
+            if (event.key === 'Enter') {
+                if (!input.value) return
+                await this.#addCourse(id, input.value)
+                this.#makeItem(list, input.value, id);
+                input.value = ''
+            }
+        })
         button.addEventListener("click", async (e) => {
             e.preventDefault();
-            const data = await this.#addCourse(id, input.value)
+            if (!input.value) return
+            await this.#addCourse(id, input.value)
+            this.#makeItem(list, input.value, id);
             input.value = ''
-            this.#renderList(list, data)
         })
-        this.#renderList(list, scheduleInfo['courses'])
+        this.#renderList(list, scheduleInfo['courses'], id)
         button.innerText = 'Add course'
         view.appendChild(button)
         view.appendChild(list)
-
         return view
     }
 
-    #renderList(comp, data) {
+    #renderList(comp, data, id) {
         if (!data) return
         comp.innerHTML = ''
-        data.forEach(s => {
-            const li = document.createElement("li");
-            li.innerText = s
-            comp.appendChild(li)
+        data.forEach(s => this.#makeItem(comp, s, id))
+    }
+
+    #makeItem(comp, s, id) {
+        const li = document.createElement("li");
+        const div = document.createElement("div");
+        div.innerText = s;
+        const button = document.createElement("button");
+        button.innerText = 'delete'
+        button.addEventListener("click", async (e) => {
+            e.preventDefault()
+            await this.#deleteCourse(id, s)
+            comp.removeChild(li)
         })
+        li.appendChild(div)
+        li.appendChild(button)
+        comp.appendChild(li)
     }
 
     async #getSchedule(id) {
@@ -66,6 +87,7 @@ export class ScheduleEditor extends View {
     }
 
     async #addCourse(id, course) {
+        if (!course) return
         const res = await fetch(`/schedules/${id}`, {
             method: "POST",
             headers: {
@@ -74,5 +96,16 @@ export class ScheduleEditor extends View {
             body: JSON.stringify({course})
         })
         return (await res.json())
+    }
+
+    async #deleteCourse(id, course) {
+        if (!course) return
+        const res = await fetch(`/schedules/${id}`, {
+            method: "Delete",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({course})
+        })
     }
 }

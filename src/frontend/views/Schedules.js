@@ -81,6 +81,7 @@ class ScheduleList {
 
     async #addSchedule(scheduleName) {
         const name = scheduleName.value
+        if (!name) return
         const id = await this.#makeSchedule(name);
         this.#list.appendChild(this.#scheduleItem(name, id));
         scheduleName.value = '';
